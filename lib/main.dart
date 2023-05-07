@@ -16,6 +16,13 @@ class _MyAppState extends State<MyApp> {
   int leftDiceNumber = 5;
   int rightDiceNumber = 2;
 
+  void randomize() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,7 +36,9 @@ class _MyAppState extends State<MyApp> {
           child: Row(children: [
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  randomize();
+                },
                 child: Image(
                   image: AssetImage('images/dice-$leftDiceNumber.png'),
                 ),
@@ -37,7 +46,9 @@ class _MyAppState extends State<MyApp> {
             ),
             Expanded(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  randomize();
+                },
                 child: Image(
                   image: AssetImage('images/dice-$rightDiceNumber.png'),
                 ),
